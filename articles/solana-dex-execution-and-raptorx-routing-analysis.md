@@ -91,3 +91,37 @@ As autonomous AI agents increasingly originate on-chain volume on Solana, they r
 | **2. Adjacent Bin/Tick Lookahead + Shared RaptorX ALT** | Medium (2–3 weeks) | **>50% drop in failed swaps** during memecoin & token-launch volatility spikes. |
 | **3. `jitodontfront` Sandwich Guard + Dual SWQoS/Jito Broadcast** | Low–Medium (1–2 weeks) | **Zero bundle front-running** and sub-400ms P90 landing latency. |
 | **4. Scoped Agentic Execution API (Session Keys + Pre-Trade Rug Guard)** | Medium (3–4 weeks) | Captures high-retention **24/7 autonomous agent volume** with deterministic safety rails. |
+
+
+---
+
+## 6. Live RaptorX Claw AI 5.0 & RexScreener Evaluation (Queries & Generated Reports)
+
+Below are the live research prompts executed on `raptorx.trade` (**Claw AI 5.0** and **RexScreener**) along with the generated intelligence reports and architectural observations from our testing session:
+
+### 6.1 Research Query 1 — `$SOL` Intraday & Multi-Timeframe Liquidity Structure
+- **Prompt Executed**:
+  > `"Analyze $SOL 15m and 4h market structure, orderflow imbalance, and key liquidity levels across Raydium and Meteora."`
+- **Generated Report & Sources (`Claw AI 5.0`)**:
+
+| Query 1 & Report Opening | Report Findings & Verified Sources |
+| :---: | :---: |
+| ![Query 1 Report Start](../assets/raptorx/query1-sol-report-start.png) | ![Query 1 Report Sources](../assets/raptorx/query1-sol-report-sources.png) |
+
+### 6.2 Research Query 2 — `$JUP` vs. `$RAY` On-Chain Volume, Holder Concentration & Volatility Risk
+- **Prompt Executed**:
+  > `"Compare current on-chain volume, holder concentration, and volatility risk between $JUP and $RAY on Solana."`
+- **Generated Report & Comparative Matrix (`Claw AI 5.0`)**:
+
+| Query 2 & Multi-Asset Breakdown | Comparative Table, Risk Summary & Sources |
+| :---: | :---: |
+| ![Query 2 Report Start](../assets/raptorx/query2-jup-ray-start.png) | ![Query 2 Comparative Summary](../assets/raptorx/query2-jup-ray-table-summary.png) |
+
+### 6.3 RexScreener Live Token Feed & UX Observations from Testing
+- **Live RexScreener Session**:
+
+![RexScreener Live Session](../assets/raptorx/rexscreener-live-session.png)
+
+- **Concrete Product Feedback from Live Session**:
+  1. **Streaming Recovery in Claw AI 5.0**: When a long research report hits a transient SSE/WebSocket timeout mid-stream (`"Failed to send message"` toast), the backend actually completes and persists the report in chat history (visible immediately on page reload), but the frontend UI drops the in-progress bubble. Adding automatic state reconciliation on stream close eliminates false error toasts and duplicate user retries.
+  2. **Unauthenticated RexScreener Fallback**: Before Privy login, the RexScreener table stays on `"Loading trending tokens..."` indefinitely; rendering cached public snapshots for logged-out visitors before gating deep actions (`Full Report` / `Swap`) improves top-of-funnel conversion.
